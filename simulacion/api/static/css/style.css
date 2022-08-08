@@ -1,0 +1,93 @@
+body {
+    background-image: url("../img/fondoP.png");
+}
+.tabla {
+    background-color: #343a40 !important;
+    border-radius: 3px;
+    color: white;
+}
+.fondoTabla {
+    background-color: white;
+}
+h1 {
+    color: rgb(255, 255, 255);
+    padding: 5px;
+}
+h2 {
+    color: rgb(0, 0, 0);
+    padding: 10px;
+}
+.alert {
+    color: red;
+    padding: 0;
+    margin-left: 0;
+}
+.navbar-expand-sm a:hover {
+    border-bottom: 2px solid rgb(255, 255, 255);
+}
+.navbar {
+    height: 60px;
+    border-bottom: 2px solid white;
+}
+.btnCRUD {
+    background-color: rgb(55, 111, 167);
+    border-radius: 5px;
+    padding: 3px;
+    color: white;
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 10px;
+}
+.btnC {
+    background-color: rgb(55, 111, 167);
+    border-radius: 5px;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: white;
+}
+.btnCRUD:hover, .btnC:hover {
+    background-color: rgb(114, 120, 126);
+}
+.fondo {
+    background-color: rgb(33, 37, 41);
+    color: white;
+    padding: 5px;
+}
+#divCRUD {
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px 10% 10px 10%;
+    height: 450px;
+}
+#divC {
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px 10% 10px 10%;
+    height: 800px;
+    margin-bottom: 30px;
+}
+th {
+    width: 400px;
+    padding: 2px;  
+}
+.p {
+    text-align: center;
+}
+table {
+    margin-bottom: 20px;
+}
+.selectMoneda, .inputNUM {
+    width: 130px;
+}
+.selectUser {
+    width: 350px;
+}
+.Cdiv {
+    display: inline-flex;
+}
+.btnC5 {
+    margin-left: 10px;
+}

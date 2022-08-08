@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Update</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <!-- Iconos FontAwesome -->
+        
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+            integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+        <!-- Elementos del Estilo -->
+        <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+            <a class="navbar-brand" href="http://localhost/index.html">Grupo 8</a>
+            <a class="navbar-brand" href="http://localhost/simulacion/simulacion.html">Volver al Menú</a>
+            <a class="navbar-brand" href="/api/{{tabla}}">Retroceder</a>
+            <ul class="navbar-nav ml-auto">
+                <!-- Visible solo si hay una sesión iniciada -->
+                <li class="nav-item">
+                <a href="#" class="nav-link" onclick="preguntarCierreSesion()">Cerrar Sesión</a>
+                </li>
+            </ul>'
+        </nav>
+        <div class='container-fluid'>
+            <div class="row p-3">
+                <h1>Editar fila de la tabla: {{nombre}}</h1>
+            </div>
+            <div class="row p-3">
+                <div class="col">
+                    <div class="container shadow-lg rounded m-auto p-5 fondoTabla">
+                        <!-- El formulario debe aparecer llenado con los valores actuales de los parámetros -->
+                        {% if id|length == 1 %}
+                        <form action="/api/{{nombre}}/update/{{datos[id[0]]}}" method="POST">
+                            {%for elem in datos%}
+                            <div class="form-group">
+                                {% if elem == id[0] %}
+                                <label for="{{elem}}"><strong>{{elem}}</strong> <span class="alert">(Este atributo no puede ser modificado, cambiar una PK podría producir errores)</span></label>
+                                <br>
+                                <label for="{{elem}}">{{datos[elem]}} </label>
+                                {% else %}
+                                    <label for="{{elem}}"><strong>{{elem}}</strong></label>
+                                    {% if elem == 'pais' %}
+                                    <select class="form-control" id="{{elem}}" name="{{elem}}" required>
+                                        {% for pais in listaPaises%}
+                                            {% if pais['cod_pais'] == datos[elem] %}
+                                            <option selected value="{{pais['cod_pais']}}">{{pais['nombre']}}</option>
+                                            {% else %}
+                                            <option value="{{pais['cod_pais']}}">{{pais['nombre']}}</option>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                    {% else %}                                
+                                    <input type="text" class="form-control" value="{{datos[elem]}}" name="{{elem}}" required>
+                                    {% endif %}
+                                {% endif %}  
+                            </div>
+                            {%endfor%}
+                            <div class='d-flex justify-content-end'>
+                                <a class="btn btn-secondary mx-3" href="/api/{{nombre}}">Volver</a>
+                                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                            </div>
+                        </form>
+                        {% else %}
+                        <form action="/api/{{nombre}}/update/{{datos[id[0]]}}={{datos[id[1]]}}" method="POST">
+                            {%for elem in datos%}
+                            <div class="form-group">
+                                {% if (elem == id[0]) or (elem == id[1]) %}
+                                <label for="{{elem}}"><strong>{{elem}}</strong><span class="alert">(Este atributo no puede ser modificado, cambiar una PK podría producir errores)</span></label>
+                                <br><label for="{{elem}}">{{datos[elem]}}</label>
+                                {% else %}
+                                <label for="{{elem}}"><strong>{{elem}}</strong></label>
+                                <input type="text" class="form-control" value="{{datos[elem]}}" name="{{elem}}" required>
+                                {% endif %}
+                            </div>
+                            {%endfor%}
+                            <div class='d-flex justify-content-end'>
+                                <a class="btn btn-secondary mx-3" href="/api/{{nombre}}">Volver</a>
+                                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                            </div>
+                        </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="{{url_for('static',filename='js/cierreSession.js')}}"></script>
+    </body>
+</html>

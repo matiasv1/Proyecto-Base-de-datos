@@ -1,0 +1,14 @@
+#titulo {
+    margin-left: 20px;
+    color: white;
+}
+.letraN {
+    font-weight: bold;
+}
+.icon {
+    margin-right: 2px;
+}
+.footer {
+    font-size: 12px;
+    color: white;
+}

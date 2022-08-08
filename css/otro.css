@@ -1,0 +1,83 @@
+body {
+    background-image: url("../../../../img/fondoP.png");
+    
+}
+#hoja {
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: 2px solid white;
+    color: rgb(0, 0, 0);
+}
+#hoja1 {
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: 2px solid white;
+    color: rgb(0, 0, 0);
+    padding: 40px;
+    margin-left: 5%;
+    margin-bottom: 20px;
+    width: 90%;
+}
+.navbar {
+    height: 60px;
+    border-bottom: 2px solid white;
+}
+.navbar-expand-sm a:hover {
+    border-bottom: 2px solid rgb(255, 255, 255);
+}
+#imagenPortada {
+    border-radius: 10px;
+    border: 2px solid rgb(126, 121, 121);
+    width: 100%;
+    
+}
+footer {
+    border-top: 2px solid white;
+    float: bottom;
+}
+.cart1 {
+    background-color: #343a40;
+    vertical-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-top: 15px;
+    text-align: center;
+    color: white;
+    border-radius: 3px;
+    padding: 10px;
+}
+#c2 {
+    align-items: center;
+}
+.pp {
+    text-align: justify;
+    
+}
+.pr {
+    text-align: right;
+    
+}
+.pl {
+    text-align: left;
+    
+}
+.design {
+    background-color: #e2970c;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='105' viewBox='0 0 80 105'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='death-star' fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M20 10a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V10zm15 35a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V45zM20 75a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V75zm30-65a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V10zm0 65a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V75zM35 10a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V10zM5 45a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V45zm0-35a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V10zm60 35a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V45zm0-35a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V10z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+
+}
+.numC1 {
+    width : 30%;
+    margin: 10px;
+}
+.numC2 {
+    width : 30%;
+    margin: 10px;
+}
+.infoPar {
+    padding: 40px;
+    text-align: right;
+}
+.infoImpar {
+    padding: 40px;
+    text-align: left;
+}

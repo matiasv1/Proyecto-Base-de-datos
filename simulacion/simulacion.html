@@ -1,0 +1,74 @@
+<?php include $_SERVER['DOCUMENT_ROOT'].'/include/navbar.html'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/restring/restringUser.php';?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <title>Simulación</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <link rel='stylesheet' type='text/css' media='screen' href='/simulacion/api/static/css/style.css'>
+        <script src='main.js'></script>
+    </head>
+    <body>
+        <br><br>
+
+        <div class="container">
+            <div class="row" >
+                <!-- Columna CRUD -->
+                <div  class="col-4">
+                    <div id="divCRUD" >   
+                        <h3><p class="p">CRUD</p></h3>
+                        <p class="p">Seleccione la tabla que desea editar</p>
+                        <p class="fondo p">Tablas</p>
+                        <button onclick="redirigir('http://127.0.0.1:5000/api/usuario')" class="btnCRUD">usuario</button>
+                        <button onclick="redirigir('http://127.0.0.1:5000/api/usuario_tiene_moneda')" class="btnCRUD">usuario_tiene_moneda</button>
+                        <button onclick="redirigir('http://127.0.0.1:5000/api/moneda')" class="btnCRUD">moneda</button>
+                        <button onclick="redirigir('http://127.0.0.1:5000/api/precio_moneda')" class="btnCRUD">precio_moneda</button>
+                        <button onclick="redirigir('http://127.0.0.1:5000/api/cuenta_bancaria')" class="btnCRUD">cuenta_bancaria</button>
+                        <button onclick="redirigir('http://127.0.0.1:5000/api/pais')" class="btnCRUD">pais</button>
+                    </div>
+                </div>
+                <div class="col-1"></div>
+                <!-- Columna Consultas -->
+                <div class="col-6">  
+                    <div id="divC" >   
+                        <h3><p class="p">Consultas</p></h3>
+                        <p class="p">Seleccione la Consulta a realizar</p>
+                        <p class="fondo p ">Consultas</p>
+                        <table>
+                            <tr>
+                                <th scope="col"><button onclick="redirigir('http://127.0.0.1:5000/api/consulta-1')" class="btnC">Consulta 1</button></th>
+                                <th scope="col"><button onclick="redirigir('http://127.0.0.1:5000/api/consulta-2')" class="btnC">Consulta 2</button></th>
+                                <th scope="col"><button onclick="redirigir('http://127.0.0.1:5000/api/consulta-3')" class="btnC">Consulta 3</button></th>
+                                <th scope="col"><button onclick="redirigir('http://127.0.0.1:5000/api/consulta-4')" class="btnC">Consulta 4</button></th>
+                            </tr>
+                            <tr>
+                                <th scope="col"><button onclick="redirigir('http://127.0.0.1:5000/api/consulta-5')" class="btnC">Consulta 5</button></th>
+                                <th scope="col"><button onclick="redirigir('http://127.0.0.1:5000/api/consulta-6')" class="btnC">Consulta 6</button></th>
+                                <th scope="col"><button onclick="redirigir('http://127.0.0.1:5000/api/consulta-7')" class="btnC">Consulta 7</button></th>
+                                <th scope="col"><button onclick="redirigir('http://127.0.0.1:5000/api/consulta-8')" class="btnC">Consulta 8</button></th>
+                            </tr>
+                        </table>
+                        <p class="fondo p">¿Qué hacen las consultas?</p>
+                        <ul>
+                            <li><strong>Consulta 1:</strong> Obtener todos los usuarios registrados durante el año X.</li>
+                            <li><strong>Consulta 2:</strong> Obtener todas las cuentas bancarias con un balance superior a X. </li>
+                            <li><strong>Consulta 3:</strong> Obtener todos los usuarios que pertenecen al país X. </li>
+                            <li><strong>Consulta 4:</strong> Obtener el máximo valor histórico de la moneda X. </li>
+                            <li><strong>Consulta 5:</strong> Obtener la cantidad de moneda X en circulación (Es decir, la suma de todas las cantidades de la moneda X que poseen todos los usuarios). </li>
+                            <li><strong>Consulta 6:</strong> Obtener el TOP 3 de monedas más populares, es decir, las que son poseídas por la mayor cantidad de usuarios diferentes. </li>
+                            <li><strong>Consulta 7:</strong> Obtener la moneda que más cambió su valor durante el mes X. </li>
+                            <li><strong>Consulta 8:</strong> Obtener la criptomoneda más abundante del usuario X. </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function redirigir(url){
+                window.location.href = url;
+            }
+        </script>
+    </body>
+</html>

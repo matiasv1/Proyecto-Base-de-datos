@@ -1,0 +1,35 @@
+<?php include '../../include/navbar.html'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/restring/restringUser.php';?>
+<html>
+    <body id="body">
+        <div class='container-fluid'>
+            <div class="row p-3">
+                <h1 id="titulo">Ver Usuario</h1>
+            </div>
+            <div class="row p-3">
+                <div class="col">
+                    <div class="container shadow-lg rounded m-auto p-5" action="/admin/users/CRUD/read.php" id="hoja">
+                            <!-- Aquí debe aparecer toda la información relevante del usuario -->
+                            <?php 
+                                include 'CRUD/read.php'; 
+                                echo
+                                    '<p> <span class="letraN">ID: </span>'.$id.'  <p>
+                                    <p> <span class="letraN">Nombre: </span>'.$name.'  <p>
+                                    <p> <span class="letraN">Apellido: </span>'.$apellido.'  <p>
+                                    <p> <span class="letraN">Correo: </span>'.$correo.'  <p>
+                                    <p> <span class="letraN">País: </span>'.$row2["nombre"].'  <p>
+                                    <p> <span class="letraN">Fecha de ingreso: </span>'.$fecha.'  <p> 
+                                    
+                                    <div class="d-flex justify-content-end">
+                                        <a href="/admin/users/all.html" class="btn btn-secondary">Volver</a>
+                                        <a href="/admin/users/update.html?id='.$id.'" class="btn btn-warning mx-3">Editar <i class="fas fa-edit"></i></a>
+                                        <a href="#" class="btn btn-danger" onclick="preguntar('.$id.')">Borrar <i class="fas fa-trash-alt"></i></a>
+                                    </div>';
+                            ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript" src="/js/verificador.js"></script>
+</html>

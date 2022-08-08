@@ -1,0 +1,30 @@
+<?php include '../include/navbar.html'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/restring/restringAdmin.php';?>
+<html>
+    <body>
+        <div class='container-fluid'>
+            <div class="row p-3">
+                <h1 id="titulo">Mi Billetera</h1>
+            </div>
+            <div class="row p-3">
+                <div class="col">
+                    <div class="container shadow-lg rounded m-auto p-5" id="hoja">
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Código</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Cantidad (USD)</th>
+                                    <th scope="col">Valor Actual (USD)</th>
+                                    <th scope="col">Total (USD)</th>
+                                </tr>
+                            </thead>
+                            <!-- Debería haber una de estas por cada moneda que tenga el usuario -->
+                            <?php include 'wallet.php'?>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

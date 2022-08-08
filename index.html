@@ -1,0 +1,80 @@
+<?php include 'include/navbar.html'; ?>
+<html>
+    <body id="body">
+        <div class='container-fluid'>
+            <div class="row p-3">
+                <h1 id="titulo" style="margin-left: 5%;"><image src="icon/crypto.png" width="50"></image> Página Principal</h1>
+            </div>
+            <!-- Simplemente para q se vea bonito -->
+            <div id="hoja1">
+                <div class="container">
+                    <div class="row">
+                      <!-- Columna 1 -->
+                      <div class="col-7" >
+                        <h1 class="cart1">P-Coin</h1>
+                        <br>
+                        <p class="pp">
+                            Opera con P-Coin, la plataforma bursátil que te ofrece las herramientas 
+                            más fáciles de usar para operar en los mercados financieros. Regístrate y 
+                            empieza a operar sobre divisas o valores online. Con más de 20 años de experiencia en el mercado, 
+                            P-coin te ofrece más de 200+ activos para operar y una gran variedad de instrumentos.
+                        </p>
+                        <h1 class="cart1">¿Cómo usar P-Coin?</h1>
+                        <br>
+                        <div class="row">
+                            <div class="col-6 infoImpar" > <img src="img/num1.png" class="numC1"><strong>Infórmese</strong></div>
+                            <div class="col-6" >
+                                <p class="pr">P-Coin es diferente de lo que usted conoce y usa todos los días. Antes de que empiece a usar P-Coin, hay algunas pautas con las que es necesario que se familiarice para usarlo de forma segura, además de evitar errores comunes.</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6" >
+                                <p class="pl">Usted puede usar un monedero P-Coin en su vida cotidiana con su dispositivo móvil o puede tener un monedero solo para pagos online desde su ordenador. En cualquier caso, puede escoger su monedero en un minuto.</p>
+                            </div>
+                            <div class="col-6 infoPar"><strong>Escojer monedero</strong><img src="img/num2.png" class="numC2"></div> 
+                        </div>
+                        <div class="row">
+                            <div class="col-6 infoImpar" ><img src="img/num3.png" class="numC1"><strong>Obtener bitcoins</strong></div>
+                            <div class="col-6" >
+                                <p class="pr">Puedes obtener bitcoins aceptándolos como pago por bienes y servicios o comprándoselos a un amigo o alguien cercano a usted. También puede comprarlos directamente desde una casa de cambio con su cuenta bancaria.</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6" >
+                                <p class="pl">Hay un creciente número de servicios y comerciantes aceptando P-Coin en todo el mundo. Usted puede usar P-Coin para pagarles y valorar su experiencia para ayudar a que los negocios honestos ganen más visibilidad.</p>
+                            </div>
+                            <div class="col-6 infoPar" ><strong>Gastar bitcoins</strong><img src="img/num4.png" class="numC2"></div>
+                        </div>
+                      </div>
+                      <div class="col-1" ></div>
+                      <!-- Columna 2 -->
+                      <div class="col-4">
+                        <img src="img/img0.jpeg" id="imagenPortada">
+                        <h1 class="cart1">Valores del día</h1>
+                        <div class="container shadow-lg rounded m-auto p-5" >
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">Sigla</th>
+                                        <th scope="col">Moneda</th>
+                                        <th scope="col">Valor</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php 
+                                        include 'index.php'; 
+                                    ?>
+                                </tbody>
+                            </table>
+                            
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="navbar navbar-expand-sm navbar-dark bg-dark footer">Creado por Grupo 8 - Bases de Datos - UT Federico Santa María</footer>
+    </body>
+    
+    <script src="js/portada.js"></script>
+</html>

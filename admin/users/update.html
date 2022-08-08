@@ -1,0 +1,19 @@
+<?php include '../../include/navbar.html'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/restring/restringUser.php';?>
+<html>
+    <body id="body">
+        <div class='container-fluid'>
+            <div class="row p-3">
+                <h1 id="titulo">Editar Usuario</h1>
+            </div>
+            <div class="row p-3">
+                <div class="col">
+                    <div class="container shadow-lg rounded m-auto p-5" id="hoja">
+                        <!-- El formulario debe aparecer llenado con los valores actuales de los parámetros -->
+                        <?php include 'CRUD/update.php'; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

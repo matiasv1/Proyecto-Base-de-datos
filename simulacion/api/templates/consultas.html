@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Simulador de Consultas</title>
+    
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <!-- Iconos FontAwesome -->
+            
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+            integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+        <!-- Elementos del Estilo -->
+        <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">    
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+            <a class="navbar-brand" href="http://localhost/index.html">Grupo 8</a>
+            <a class="navbar-brand" href="http://localhost/simulacion/simulacion.html">Volver al Menú</a>
+            <ul class="navbar-nav ml-auto">
+                <!-- Visible solo si hay una sesión iniciada -->
+                <li class="nav-item">
+                <a href="#" class="nav-link" onclick="preguntarCierreSesion()">Cerrar Sesión</a>
+                </li>
+            </ul>'
+        </nav>
+        <div class="row p-3">
+            <div class="col">
+                <div class="container shadow-lg rounded m-auto p-5 fondoTabla">
+                    <br>
+                    <form action="/api/consulta-{{num_consulta}}/execute" method="POST">
+                       
+                        {% if num_consulta == '1' %}
+                        <label><strong>Consulta 1:</strong> Obtener todos los usuarios registrados durante el año X.</label>
+                        <br><label><strong>Seleccione año X:  </strong></label><br>
+                        <div class="Cdiv">
+                            <select class="form-control selectMoneda" id="consulta_1" name="consulta_1" required>
+                                {% for a in datos%}
+                                    {% if a == data|int %}
+                                    <option selected value="{{data}}">{{data}}</option>
+                                    {% else %}
+                                    <option value="{{a}}">{{a}}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                            <button type="submit" class="btn btn-primary btnC5" >Ejecutar</button>
+                        </div>
+                        {% elif num_consulta == '2' %}
+                        <label><strong>Consulta 2:</strong> Obtener todas las cuentas bancarias con un balance superior a X.</label>
+                        <br><label><strong>Ingrese balance superior a X: </strong>(Valor númerico entero o decimal)</label><br>
+                        <div class="Cdiv">
+                            {% if data != [] %}
+                            <input type="text" class="form-control inputNUM" value="{{data}}" name="consulta_2" required>
+                            {% else %}
+                            <input type="text" class="form-control inputNUM" placeholder="num" name="consulta_2" required>
+                            {% endif %}
+                            <button type="submit" class="btn btn-primary btnC{{5}}" >Ejecutar</button>
+                        </div>
+                        {% elif num_consulta == '3' %}
+                        <label><strong>Consulta 3:</strong> Obtener todos los usuarios que pertenecen al país X.</label><br>
+                        <label><strong>Seleccione país X:  </strong></label><br>
+                        <div class="Cdiv">
+                            <select class="form-control selectMoneda" id="consulta_3" name="consulta_3" required>
+                                {% for pais in datos %}
+                                    {% if pais['nombre'] == data %}
+                                    <option selected value="{{data}}">{{data}}</option>
+                                    {% else %}
+                                    <option value="{{pais['nombre']}}">{{pais['nombre']}}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                            <button type="submit" class="btn btn-primary btnC{{5}}" >Ejecutar</button>
+                        </div>
+                        {% elif num_consulta == '4' %}
+                        <label><strong>Consulta 4:</strong> Obtener el máximo valor histórico de la moneda X.</label>
+                        <br><label><strong>Seleccione moneda X:  </strong></label><br>
+                        <div class="Cdiv">
+                            <select class="form-control selectMoneda" id="consulta_4" name="consulta_4" required>
+                                {% for moneda in datos %}
+                                    {% if moneda['nombre'] == data %}
+                                    <option selected value="{{data}}">{{data}}</option>
+                                    {% else %}
+                                    <option value="{{moneda['nombre']}}">{{moneda['nombre']}}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                            <button type="submit" class="btn btn-primary btnC{{5}}" >Ejecutar</button>
+                        </div>
+                        {% elif num_consulta == '5' %}
+                        <label><strong>Consulta 5:</strong> Obtener la cantidad de moneda X en circulación (Es decir, la suma de todas las cantidades de la moneda X que poseen todos los usuarios).</label>
+                        <label><strong>Seleccione la sigla de la moneda X:  </strong></label><br>
+                        <div class="Cdiv">
+                            <select class="form-control selectMoneda" id="consulta_5" name="consulta_5" required>
+                                {% for moneda in datos %}
+                                    {% if moneda['sigla'] == data %}
+                                    <option selected value="{{data}}">{{data}}</option>
+                                    {% else %}
+                                    <option value="{{moneda['sigla']}}">{{moneda['sigla']}}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                            <button type="submit" class="btn btn-primary btnC5" >Ejecutar</button>
+                        </div>
+                        {% elif num_consulta == '6' %}
+                        <label><strong>Consulta 6:</strong> Obtener el TOP 3 de monedas más populares, es decir, las que son poseídas por la mayor cantidad de usuarios diferentes.</label><br>
+                        <div class="Cdiv">
+                            <button type="submit" class="btn btn-primary btnC5" >Ejecutar</button>
+                        </div>
+                        {% elif num_consulta == '7' %}
+                        <label><strong>Consulta 7:</strong> Obtener la moneda que más cambió su valor durante el mes X.</label><br><br>
+                        <div class="row">
+                            <div class="col-2">
+                                <label><strong>Seleccione Mes X:  </strong></label><br>
+                                <select class="form-control selectMoneda" id="consulta_7_mes" name="consulta_7_mes" required>
+                                    {% for m in datos[0] %}
+                                        {% if m == data[0]|int %}
+                                        <option selected value="{{data[0]}}">{{data[0]}}</option>
+                                        {% else %}
+                                        <option value="{{m}}">{{m}}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-2">
+                                <label><strong>Seleccione año:  </strong></label><br>
+                                <select class="form-control selectMoneda" id="consulta_7_year" name="consulta_7_year" required>
+                                    {% for a in datos[1] %}
+                                        {% if a == data[1]|int %}
+                                        <option selected value="{{data[1]}}">{{data[1]}}</option>
+                                        {% else %}
+                                        <option value="{{a}}">{{a}}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-2">
+                                <br>
+                                <button type="submit" class="btn btn-primary btnC{{5}}" >Ejecutar</button>
+                            </div>
+                        <div>
+                        {% elif num_consulta == '8' %}
+                        <label><strong>Consulta 8:</strong> Obtener la criptomoneda más abundante del usuario X.</label>
+                        <br><label><strong>Seleccione usuario X:  </strong></label><br>
+                        <div class="Cdiv">
+                            <select class="form-control selectUser" id="consulta_8" name="consulta_8" required>
+                                {% for u in datos%}
+                                    {% if u['id'] == data|int %}
+                                    <option selected value="{{data}}">{{u['id']}}. {{u['nombre']}}  {{u['apellido']}}</option>
+                                    {% else %}
+                                    <option value="{{u['id']}}">{{u['id']}}. {{u['nombre']}}  {{u['apellido']}}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                            <button type="submit" class="btn btn-primary btnC{{5}}" >Ejecutar</button>
+                        </div>
+                        {% endif %}
+                           
+                    </form>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        {% if result %}
+        <div class="container shadow-lg rounded m-auto p-5 fondoTabla">
+            <strong>Resultados:</strong><br><br>
+            {% if valores[0]|length != 0 %}
+            <table class="table">
+                <thead class="thead-dark tabla">
+                    <tr>
+                        {% for elem in valores[0] %}
+                        <td>
+                            {{elem}}
+                        </td>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for dicc in valores[1] %}
+                        <tr>
+                            {% for elem in valores[0] %}
+                            <td>
+                                {{dicc[elem]}}
+                            </td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <div class="alert">
+                <strong>Lo sentimos!</strong> No es posible encontrar resultados.
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+        <script src="{{url_for('static',filename='js/cierreSession.js')}}"></script>
+    </body>
+</html>

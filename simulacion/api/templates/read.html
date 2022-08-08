@@ -1,0 +1,57 @@
+<?php include $_SERVER['DOCUMENT_ROOT'].'/restring/restringUser.php';?>
+<html>
+    <head>
+        <title>Read</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <!-- Iconos FontAwesome -->
+        
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+            integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+        <!-- Elementos del Estilo -->
+        <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    </head>
+    <body id="body">
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+            <a class="navbar-brand" href="http://localhost/index.html">Grupo 8</a>
+            <a class="navbar-brand" href="http://localhost/simulacion/simulacion.html">Volver al Menú</a>
+            <a class="navbar-brand" href="/api/{{tabla}}">Retroceder</a>
+            <ul class="navbar-nav ml-auto">
+                <!-- Visible solo si hay una sesión iniciada -->
+                <li class="nav-item">
+                <a href="#" class="nav-link" onclick="preguntarCierreSesion()">Cerrar Sesión</a>
+                </li>
+            </ul>'
+        </nav>
+        <div class='container-fluid'>
+            <div class="row p-3">
+                <h1 id="titulo">Ver Fila</h1>
+            </div>
+            <div class="row p-3">
+                <div class="col">
+                    <div class="container shadow-lg rounded m-auto p-5 fondoTabla" action="/admin/users/CRUD/read.php" id="hoja">
+                            <!-- Aquí debe aparecer toda la información relevante del usuario -->
+                            {% for elem in data%}
+                                <p> <strong>{{elem}}: </strong>{{data[elem]}}<p>   
+                            {% endfor %}
+                            <div class="d-flex justify-content-end">
+                                <a href="http://127.0.0.1:5000/api/{{tabla}}" class="btn btn-secondary">Volver</a>
+                                <!-- Falta editar esto -->
+                                {% if id|length == 1 %}
+                                <a href="/api/{{tabla}}/edit/{{data[id[0]]}}" class="btn btn-warning mx-3">Editar <i class="fas fa-edit"></i></a>
+                                <a href="#" class="btn btn-danger" onclick="preguntar('{{tabla}}','{{data[id[0]]}}')">Borrar <i class="fas fa-trash-alt"></i></a>
+                                {% else %}
+                                <a href="/api/{{tabla}}/edit/{{data[id[0]]}}={{data[id[1]]}}" class="btn btn-warning mx-3">Editar <i class="fas fa-edit"></i></a>
+                                <a href="#" class="btn btn-danger" onclick="preguntar('{{tabla}}','{{data[id[0]]}}={{data[id[1]]}}')">Borrar <i class="fas fa-trash-alt"></i></a>
+                                {% endif %}
+                            </div>       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    
+    <script src="{{url_for('static',filename='js/cierreSession.js')}}"></script>
+</html>

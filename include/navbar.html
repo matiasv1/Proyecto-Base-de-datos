@@ -1,0 +1,16 @@
+<?php include 'header.html';?>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <!-- Ponga el número de su equipo -->
+        <a class="navbar-brand" href="/index.html">Grupo 8</a>
+        <?php include $_SERVER['DOCUMENT_ROOT']. '/sesion/valida_sesion.php' ?>
+    </nav>
+    <script>
+        function preguntarCierreSesion() {
+           if (confirm("¿Desea cerrar sesión?")) {
+              window.location.href = "/sesion/logout.php";
+           }
+        }
+    </script>
+</body>
+

@@ -1,0 +1,85 @@
+<?php include $_SERVER['DOCUMENT_ROOT'].'/restring/restringUser.php';?>
+<html>
+    <header>
+        <title>Administrar</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <!-- Iconos FontAwesome -->
+        
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+            integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+        <!-- Elementos del Estilo -->
+        <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+        
+    </header>
+    <body>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+            <a class="navbar-brand" href="http://localhost/index.html">Grupo 8</a>
+            <a class="navbar-brand" href="http://localhost/simulacion/simulacion.html">Volver al Menú</a>
+            <ul class="navbar-nav ml-auto">
+                <!-- Visible solo si hay una sesión iniciada -->
+                <li class="nav-item">
+                <a href="#" class="nav-link" onclick="preguntarCierreSesion()">Cerrar Sesión</a>
+                </li>
+            </ul>'
+        </nav>
+        <div class='container-fluid'>
+            <div class="row p-3">
+                <h1>Administrar Tabla: {{nombre}}</h1>
+            </div>
+            <div class="row p-3">
+                <div class="col">
+                    <!-- Mostrar aquí los datos de cada usuario -->
+                    <div class="container shadow-lg rounded m-auto p-5 fondoTabla">
+                        <table class="table">
+                            <thead class="thead-dark tabla">
+                                <tr>
+                                    {% for elem in lista[0].keys() %}
+                                    <td>
+                                        {{elem}}
+                                    </td>
+                                    {% endfor %}
+                                    <td>
+                                        Acciones
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for data in lista%}
+                                    <tr>
+                                        {% for elem in data.values() %}
+                                        <td>
+                                            {{elem}}
+                                        </td>
+                                        {% endfor %}
+                                        <td>
+                                            
+                                            {% if id|length == 1 %}
+                                            <a href="/api/{{nombre}}/read/{{data[id[0]]}}" class="btn btn-primary">Ver <i
+                                                class="fas fa-search"></i></a>
+                                            <a href="/api/{{nombre}}/edit/{{data[id[0]]}}" class="btn btn-warning">Editar <i
+                                                class="fas fa-edit"></i></a>
+                                            <a href="/api/{{nombre}}/delete/{{data[id[0]]}}" class="btn btn-danger">Borrar <i
+                                                class="fas fa-trash-alt"></i></a>
+                                            {% else %}
+                                            <a href="/api/{{nombre}}/read/{{data[id[0]]}}={{data[id[1]]}}" class="btn btn-primary">Ver <i
+                                                class="fas fa-search"></i></a>
+                                            <a href="/api/{{nombre}}/edit/{{data[id[0]]}}={{data[id[1]]}}" class="btn btn-warning">Editar <i
+                                                class="fas fa-edit"></i></a>
+                                            <a href="/api/{{nombre}}/delete/{{data[id[0]]}}={{data[id[1]]}}" class="btn btn-danger">Borrar <i
+                                                class="fas fa-trash-alt"></i></a>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    <a href="/api/{{nombre}}/create" class="btn btn-success">Nuevo <i class="fas fa-plus"></i></a>                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="{{url_for('static',filename='js/cierreSession.js')}}"></script>
+    </body>
+</html>
